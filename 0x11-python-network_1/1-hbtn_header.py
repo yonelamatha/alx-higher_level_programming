@@ -6,8 +6,9 @@ the value of the X-Request-Id variable found in the header of the response.
 import urllib.request
 import sys
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     with urllib.request.urlopen(sys.argv[1]) as response:
-        value = response.info()
-    print(value['X-Request-Id'])
+        html = response.info()
+        value = html.get('X-Request-Id')
+        print(value)
